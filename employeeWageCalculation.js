@@ -16,6 +16,11 @@ const WAGE_PER_HOUR = 20;
 const NO_OF_WORKING_DAYS = 10;
 const MAX_HRS_IN_MONTH = 100;
 
+/**
+ * Function for getting employee working hours 
+ * @param {*} empCheck : part time or full time 
+ * @returns : working hours
+ */
 function getWorkingHours(empCheck) {
     switch (empCheck) {
         case IS_PART_TIME:
