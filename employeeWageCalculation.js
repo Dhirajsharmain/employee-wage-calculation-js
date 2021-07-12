@@ -117,3 +117,7 @@ let dailyCntr = 0;
  }
 
  console.log("\nFirst time full time wage was earned on Day : " + mapDayWithWageArr.find(findFullTimeWage));
+
+ // chack if Every element of full time wage is truely holding full time wage
+
+ console.log("Check All Element have Full Time Wage : " + fullDayWageArr.every(findFullTimeWage));
