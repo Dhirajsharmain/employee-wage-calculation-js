@@ -121,3 +121,12 @@ let dailyCntr = 0;
  // chack if Every element of full time wage is truely holding full time wage
 
  console.log("Check All Element have Full Time Wage : " + fullDayWageArr.every(findFullTimeWage));
+
+ // Find the number of days the employee worked.
+
+ function totalDaysWorked(numofDays, dailyWage){
+     if (dailyWage > 0) return numofDays+1;
+     return numofDays;
+ }
+
+ console.log("\nNumber of days employee worked : " + empDailyWageArr.reduce(totalDaysWorked, 0));
