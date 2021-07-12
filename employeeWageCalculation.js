@@ -41,11 +41,11 @@ function getWorkingHours(empCheck) {
  * @param {*} empHrs 
  * @returns 
  */
-function calDailyWage(empHrs){
+function calDailyWage(empHrs) {
     return empHrs * WAGE_PER_HOUR;
 }
 
-while(totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NO_OF_WORKING_DAYS){
+while (totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NO_OF_WORKING_DAYS) {
     let empCheck = Math.floor(Math.random() * 10) % 3;
     totalWorkingDays++;
     let empHrs = getWorkingHours(empCheck);
@@ -55,4 +55,28 @@ while(totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NO_OF_WORKING_DAYS){
 
 let empWage = calDailyWage(totalEmpHrs);
 
-console.log("Total Days : " + totalWorkingDays + ", Total Hrs : " + totalEmpHrs + ", Emp Wage : " + empWage);
+let totEmpWage = 0;
+
+/**
+ * Calculating total wage for a month
+ * @param {*} dailyWage 
+ */
+function sum(dailyWage) {
+    totEmpWage += dailyWage;
+}
+
+empDailyWageArr.forEach(sum);
+
+console.log("UC7 - Total Days : " + totalWorkingDays + ", Total Hrs : " + totalEmpHrs + ", Emp Wage : " + empWage);
+
+/**
+ * calculating mployee wage with reduce methd
+ * @param {*} totalWage 
+ * @param {*} dailyWage 
+ * @returns 
+ */
+function totalWages(totalWage, dailyWage) {
+    return totalWage + dailyWage;
+}
+
+console.log("UC7 - Emp Wage with reduce : " + empDailyWageArr.reduce(totalWages, 0));
