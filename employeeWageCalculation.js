@@ -37,9 +37,9 @@ function getWorkingHours(empCheck) {
 }
 
 /**
- * 
- * @param {*} empHrs 
- * @returns 
+ * Calculating daily wage 
+ * @param {*} empHrs : workig hours 
+ * @returns : wage for working hours
  */
 function calDailyWage(empHrs) {
     return empHrs * WAGE_PER_HOUR;
@@ -54,6 +54,10 @@ while (totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NO_OF_WORKING_DAYS)
 }
 
 let empWage = calDailyWage(totalEmpHrs);
+
+/**
+ *  UC 7A Calculate total wage using array forEach traversal or reduce method.
+ */
 
 let totEmpWage = 0;
 
@@ -81,7 +85,9 @@ function totalWages(totalWage, dailyWage) {
 
 console.log("UC7 - Emp Wage with reduce : " + empDailyWageArr.reduce(totalWages, 0));
 
-// Show The Day Along With Daily Wage Using Array Map Helper Function
+/**
+ * UC 7B Show The Day Along With Daily Wage Using Array Map Helper Function
+ */
 
 let dailyCntr = 0;
 
@@ -99,8 +105,9 @@ let dailyCntr = 0;
  console.log("Daily Wage Map")
  console.log(mapDayWithWageArr);
 
-
- // Show Days when full time wage of 160 were earned.
+/**
+ * UC 7C Show Days when full time wage of 160 were earned.
+ */
 
  function fullTimeWage(dailyWage){
      return dailyWage.includes("160");
@@ -110,7 +117,9 @@ let dailyCntr = 0;
  console.log(" Daily wage filter when fulltime wage earned\n");
  console.log(fullDayWageArr);
 
- // Find the first occurence when full time wage was earned using find function
+ /**
+  * UC 7D Find the first occurence when full time wage was earned using find function
+  */
 
  function findFullTimeWage(dailyWage){
      return dailyWage.includes("160");
@@ -118,11 +127,15 @@ let dailyCntr = 0;
 
  console.log("\nFirst time full time wage was earned on Day : " + mapDayWithWageArr.find(findFullTimeWage));
 
- // chack if Every element of full time wage is truely holding full time wage
+ /**
+  * UC 7E chack if Every element of full time wage is truely holding full time wage
+  */
 
  console.log("Check All Element have Full Time Wage : " + fullDayWageArr.every(findFullTimeWage));
 
- // Find the number of days the employee worked.
+ /***
+  * UC 7G Find the number of days the employee worked.
+  */
 
  function totalDaysWorked(numofDays, dailyWage){
      if (dailyWage > 0) return numofDays+1;
