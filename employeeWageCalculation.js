@@ -21,6 +21,7 @@ let totalWorkingDays = 0;
 let empDailyWageArr = new Array();
 let empDailyWageMap = new Map();
 let empDailyHrsMap = new Map();
+let empDailyHrsAndWageArr = new Array();
 
 /**
  * Function for getting employee working hours 
@@ -37,6 +38,8 @@ function getWorkingHours(empCheck) {
             return 0;
     }
 }
+
+//UC10 object Creation
 
 /**
  * Calculating daily wage 
@@ -55,9 +58,18 @@ while (totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NO_OF_WORKING_DAYS)
     empDailyWageArr.push(calDailyWage(empHrs));
     empDailyHrsMap.set(totalWorkingDays, empHrs);
     empDailyWageMap.set(totalWorkingDays, calDailyWage(empHrs));
+    empDailyHrsAndWageArr.push({
+        dayNum: totalWorkingDays,
+        dailyHours: empHrs,
+        dailyWage: calDailyWage(empHrs),
+        toString() {
+            return '\nDay' + this.dayNum + ' => Working Hours is ' + this.dailyHours +
+                ' And Wae Earned = ' + this.dailyWage
+        },
+    });
 }
 
-console.log(empDailyWageMap);
+console.log("UC10 - Showing Daily Hours Worked and Wage Earned : " + empDailyHrsAndWageArr);
 
 let empWage = calDailyWage(totalEmpHrs);
 
@@ -168,9 +180,9 @@ console.log("UC9A - Emp Wage with Arrow : " + "Total Hours: " + totalHours + ", 
 
 let nonWorkingDays = new Array();
 let partWorkingDays = new Array();
-let fullWorkingDays = new  Array();
+let fullWorkingDays = new Array();
 
-empDailyHrsMap.forEach( (value, key) => {
+empDailyHrsMap.forEach((value, key) => {
     if (value == 8) fullWorkingDays.push(key);
     else if (value == 4) partWorkingDays.push(key);
     else nonWorkingDays.push(key);
