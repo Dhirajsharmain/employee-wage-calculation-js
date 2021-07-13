@@ -20,6 +20,7 @@ let totalEmpHrs = 0;
 let totalWorkingDays = 0;
 let empDailyWageArr = new Array();
 let empDailyWageMap = new Map();
+let empDailyHrsMap = new Map();
 
 /**
  * Function for getting employee working hours 
@@ -52,6 +53,7 @@ while (totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NO_OF_WORKING_DAYS)
     let empHrs = getWorkingHours(empCheck);
     totalEmpHrs = totalEmpHrs + empHrs;
     empDailyWageArr.push(calDailyWage(empHrs));
+    empDailyHrsMap.set(totalWorkingDays, empHrs);
     empDailyWageMap.set(totalWorkingDays, calDailyWage(empHrs));
 }
 
@@ -147,3 +149,20 @@ function totalDaysWorked(numofDays, dailyWage) {
 }
 
 console.log("\nNumber of days employee worked : " + empDailyWageArr.reduce(totalDaysWorked, 0));
+
+/***
+ * UC 9 
+ * a. Calc total Wage and total hours worked
+ * b. Show the full workings days, part working days and no working days
+ */
+
+const findTotal = (totalVal, dailyVal) => {
+    return totalVal + dailyVal;
+}
+
+let count = 0;
+let totalHours = Array.from(empDailyHrsMap.values()).reduce(findTotal, 0);
+let totalSalary = empDailyWageArr.filter(dailyWage => dailyWage > 0).reduce(findTotal, 0);
+
+console.log("UC9A - Emp Wage with Arrow : " + "Total Hours: " + totalHours + ", Total Wages: " + totalSalary);
+
