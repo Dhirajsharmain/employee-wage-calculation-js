@@ -39,7 +39,7 @@ function getWorkingHours(empCheck) {
     }
 }
 
-//UC10 object Creation
+//UC10 object Creation and store the day, hours worked and wage earned in a single object
 
 /**
  * Calculating daily wage 
